@@ -8,7 +8,8 @@
     "start": "gitbook serve ./content",
     "build": "gitbook build ./content ./gh-pages",
     "deploy": "node ./scripts/deploy-gh-pages.js",
-    "publish": "npm run build&&npm run deploy"
+    "clean": "rm -rf ./gh-pages/*/*.md && git add . && git commit -m 'update' && git push",
+    "publish": "npm run build&&npm run clean&&npm run deploy"
   },
   "repository": {
     "type": "git",
