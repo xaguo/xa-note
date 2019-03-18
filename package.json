@@ -1,0 +1,27 @@
+{
+  "name": "xa-note",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "gitbook serve ./content",
+    "build": "gitbook build ./content ./gh-pages",
+    "deploy": "node ./scripts/deploy-gh-pages.js",
+    "publish": "npm run build&&npm run deploy"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/xaguo/xa-note.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/xaguo/xa-note/issues"
+  },
+  "homepage": "https://github.com/xaguo/xa-note#readme",
+  "dependencies": {
+    "gh-pages": "^2.0.1"
+  }
+}
