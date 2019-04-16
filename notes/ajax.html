@@ -4,7 +4,7 @@
     <head>
         <meta charset="UTF-8">
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-        <title>第一节：state 复习 · GitBook</title>
+        <title>第一节：ajax 学习 · GitBook</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
         <meta name="generator" content="GitBook 3.2.3">
@@ -57,8 +57,6 @@
     <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
 
     
-    <link rel="next" href="2-hello-redux.html" />
-    
     
     <link rel="prev" href="index.md" />
     
@@ -102,7 +100,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.2" data-path="index.md">
+        <li class="chapter " data-level="1.2" data-path="../redux/index.md">
             
                 <span>
             
@@ -116,9 +114,9 @@
             <ul class="articles">
                 
     
-        <li class="chapter active" data-level="1.2.1" data-path="1-state.html">
+        <li class="chapter " data-level="1.2.1" data-path="../redux/1-state.html">
             
-                <a href="1-state.html">
+                <a href="../redux/1-state.html">
             
                     
                     第一节：state 复习
@@ -129,9 +127,9 @@
             
         </li>
     
-        <li class="chapter " data-level="1.2.2" data-path="2-hello-redux.html">
+        <li class="chapter " data-level="1.2.2" data-path="../redux/2-hello-redux.html">
             
-                <a href="2-hello-redux.html">
+                <a href="../redux/2-hello-redux.html">
             
                     
                     第二节：你好 redux
@@ -147,7 +145,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.3" data-path="../notes/index.md">
+        <li class="chapter " data-level="1.3" data-path="index.md">
             
                 <span>
             
@@ -161,9 +159,9 @@
             <ul class="articles">
                 
     
-        <li class="chapter " data-level="1.3.1" data-path="../notes/ajax.html">
+        <li class="chapter active" data-level="1.3.1" data-path="ajax.html">
             
-                <a href="../notes/ajax.html">
+                <a href="ajax.html">
             
                     
                     第一节：ajax 学习
@@ -209,7 +207,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href=".." >第一节：state 复习</a>
+        <a href=".." >第一节：ajax 学习</a>
     </h1>
 </div>
 
@@ -224,8 +222,104 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h1 id="state">state</h1>
-<p>hello world</p>
+                                <h1 id="ajax-&#x5B66;&#x4E60;&#x7B14;&#x8BB0;">ajax &#x5B66;&#x4E60;&#x7B14;&#x8BB0;</h1>
+<p>&#x4F7F;&#x7528; JavaScript &#x53D1;&#x8D77;&#x5F02;&#x6B65;&#x8BF7;&#x6C42;&#x3002;</p>
+<ul>
+<li>&#x6D4F;&#x89C8;&#x5668;&#x4E2D;<code>XMLHttpRequest</code> &#x793A;&#x4F8B;</li>
+</ul>
+<pre><code>    ```js
+    function ajax(url, fnSucc, fnFaild)
+    {
+        //1.&#x521B;&#x5EFA;ajax&#x5BF9;&#x8C61;
+        var oAjax=null;
+        // &#x517C;&#x5BB9; IE
+        if(window.XMLHttpRequest)
+        {
+            oAjax=new XMLHttpRequest();
+        }else{
+            oAjax=new ActiveXObject(&quot;Microsoft.XMLHTTP&quot;);
+        }
+
+        //2.&#x8FDE;&#x63A5;&#x670D;&#x52A1;&#x5668;
+        //open(&#x65B9;&#x6CD5;, url, &#x662F;&#x5426;&#x5F02;&#x6B65;)
+        oAjax.open(&apos;GET&apos;, url, true);
+
+        //3.&#x53D1;&#x9001;&#x8BF7;&#x6C42;
+        oAjax.send();
+
+        //4.&#x63A5;&#x6536;&#x8FD4;&#x56DE;
+        //OnReadyStateChange
+        // http &#x8BF7;&#x6C42;&#x72B6;&#x6001;&#x53D8;&#x5316; &#x56DE;&#x8C03;
+        oAjax.onreadystatechange=function ()
+        {
+            // &#x6210;&#x529F;&#x5B8C;&#x6210;
+            if(oAjax.readyState==4)
+            {
+                if(oAjax.status==200)
+                {
+                    //alert(&apos;&#x6210;&#x529F;&#xFF1A;&apos;+oAjax.responseText);
+                    fnSucc(oAjax.responseText);
+                }
+                else
+                {
+                    if(fnFaild)
+                    {
+                        fnFaild();
+                    }
+                }
+            }
+        };
+
+        // ajax.open(&apos;GET&apos;,&apos;http://www.baidu.com&apos;)
+        // ajax.send();
+    }
+    ```
+</code></pre><ul>
+<li><p>JQuery &#x4E2D;&#x7684; ajax</p>
+<pre><code>  ```js
+  // url setting
+  // async &#x8868;&#x793A;&#x662F;&#x5426;&#x5F02;&#x6B65;&#x6267;&#x884C; ajax &#x8BF7;&#x6C42;&#xFF0C;&#x9ED8;&#x8BA4;&#x4E3A; true&#xFF0C;&#x4E00;&#x822C;&#x4E0D;&#x6307;&#x5B9A;&#x4E3A; false
+  // method &#x8868;&#x793A;&#x8BF7;&#x6C42;&#x7684;&#x65B9;&#x6CD5;&#xFF0C;&#x9ED8;&#x8BA4;&#x4E3A; GET &#x53EF;&#x4EE5;&#x6307;&#x5B9A;&#x4E3A; POST PUT &#x7B49;
+  // contentType &#x53D1;&#x9001; POST &#x8BF7;&#x6C42;&#x7684;&#x683C;&#x5F0F; application/x-www-form-urlencode;application/json
+  // data &#x53D1;&#x9001;&#x7684;&#x6570;&#x636E;
+  // headers http &#x7684; headers
+  // dataType &#x63A5;&#x53D7;&#x7684;&#x6570;&#x636E;&#x683C;&#x5F0F;
+
+  $.ajax(&apos;http://www.baidu.com&apos;,{
+      dataType: &apos;json&apos;
+  }).done(function(data){
+      console.log(&apos;success&apos;,data);
+  }).fail(function(xhr,status){
+      console.log(xhr.status);
+  });
+
+  $.get(&apos;http://www.baidu.com&apos;,{id:1})
+  .done(function(data){
+      console.log(&apos;get&apos;,data);
+  })
+  .fail(function(xhr,status){
+      console.log(xhr.status);
+  });
+
+  $.post(&apos;http://www.baidu.com&apos;,{id:1})
+  .done(function(data){
+      console.log(&apos;post&apos;,data);
+  })
+  .fail(function(xhr,status){
+      console.log(xhr.status);
+  });
+
+  $.getJSON(&apos;http://www.baidu.com&apos;,{id:1})
+  .done(function(data){
+      console.log(&apos;getJSON&apos;,data);
+  })
+  .fail(function(xhr,status){
+      console.log(xhr.status);
+  });
+
+  ```
+</code></pre></li>
+</ul>
 
                                 
                                 </section>
@@ -253,14 +347,10 @@
 
             
                 
-                <a href="index.md" class="navigation navigation-prev " aria-label="Previous page: 第一章：redux">
+                <a href="index.md" class="navigation navigation-prev navigation-unique" aria-label="Previous page: 第一章：笔记">
                     <i class="fa fa-angle-left"></i>
                 </a>
                 
-                
-                <a href="2-hello-redux.html" class="navigation navigation-next " aria-label="Next page: 第二节：你好 redux">
-                    <i class="fa fa-angle-right"></i>
-                </a>
                 
             
         
@@ -269,7 +359,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"第一节：state 复习","level":"1.2.1","depth":2,"next":{"title":"第二节：你好 redux","level":"1.2.2","depth":2,"path":"redux/2-hello-redux.md","ref":"./redux/2-hello-redux.md","articles":[]},"previous":{"title":"第一章：redux","level":"1.2","depth":1,"path":"redux/index.md","ref":"./redux/index.md","articles":[{"title":"第一节：state 复习","level":"1.2.1","depth":2,"path":"redux/1-state.md","ref":"./redux/1-state.md","articles":[]},{"title":"第二节：你好 redux","level":"1.2.2","depth":2,"path":"redux/2-hello-redux.md","ref":"./redux/2-hello-redux.md","articles":[]}]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"redux/1-state.md","mtime":"2019-03-10T13:07:29.138Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-04-16T08:38:31.640Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"第一节：ajax 学习","level":"1.3.1","depth":2,"previous":{"title":"第一章：笔记","level":"1.3","depth":1,"path":"notes/index.md","ref":"./notes/index.md","articles":[{"title":"第一节：ajax 学习","level":"1.3.1","depth":2,"path":"notes/ajax.md","ref":"./notes/ajax.md","articles":[]}]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"notes/ajax.md","mtime":"2019-04-16T08:35:28.114Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-04-16T08:38:31.640Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
