@@ -1,0 +1,429 @@
+
+<!DOCTYPE HTML>
+<html lang="" >
+    <head>
+        <meta charset="UTF-8">
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <title>第三节：MongoDB相关操作 · GitBook</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 3.2.3">
+        
+        
+        
+    
+    <link rel="stylesheet" href="../gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-highlight/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-search/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+        
+
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+        
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    
+    <link rel="prev" href="CentOS下node配置.html" />
+    
+
+    </head>
+    <body>
+        
+<div class="book">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="Type to search" />
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+
+    
+
+    
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="../">
+            
+                <a href="../">
+            
+                    
+                    Introduction
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2" data-path="./">
+            
+                <a href="./">
+            
+                    
+                    第一章：笔记
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.2.1" data-path="ajax.html">
+            
+                <a href="ajax.html">
+            
+                    
+                    第一节：ajax 学习
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.2" data-path="CentOS下node配置.html">
+            
+                <a href="CentOS下node配置.html">
+            
+                    
+                    第二节：CentOS下node配置
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter active" data-level="1.2.3" data-path="MongoDB相关操作.html">
+            
+                <a href="MongoDB相关操作.html">
+            
+                    
+                    第三节：MongoDB相关操作
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+            Published with GitBook
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href=".." >第三节：MongoDB相关操作</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <h1 id="mongodb-&#x7B14;&#x8BB0;">MongoDB &#x7B14;&#x8BB0;</h1>
+<h2 id="&#x5B89;&#x88C5;&#x914D;&#x7F6E;-mongodb">&#x5B89;&#x88C5;&#x914D;&#x7F6E; MongoDB</h2>
+<h3 id="&#x5B89;&#x88C5;">&#x5B89;&#x88C5;</h3>
+<p>-&#x4E0B;&#x8F7D; MongoDB 3.6.0</p>
+<p>wget <a href="https://fastdl.mongodb.org/linux/mongodb-linux-x86_64-3.6.0.tgz" target="_blank">https://fastdl.mongodb.org/linux/mongodb-linux-x86_64-3.6.0.tgz</a></p>
+<p><a href="http://mirrors.aliyun.com/mongodb/yum/redhat/7Server/mongodb-org/3.6/x86_64/" target="_blank">http://mirrors.aliyun.com/mongodb/yum/redhat/7Server/mongodb-org/3.6/x86_64/</a></p>
+<ul>
+<li>&#x89E3;&#x538B;</li>
+</ul>
+<p>tar -zxvf mongodb-linux-x86_64-3.6.0.tgz</p>
+<h3 id="&#x6570;&#x636E;&#x5E93;&#x914D;&#x7F6E;">&#x6570;&#x636E;&#x5E93;&#x914D;&#x7F6E;</h3>
+<ul>
+<li>&#x914D;&#x7F6E;&#x73AF;&#x5883;&#x53D8;&#x91CF;&#xFF0C;vim ~/.bash_profile &#x5199;&#x5165; :/root/mongodb-linux-x86_64-3.6.0/bin &#x4FDD;&#x5B58;&#x9000;&#x51FA;</li>
+<li>&#x521B;&#x5EFA;&#x6587;&#x4EF6;&#x5939;&#xFF0C;&#x5728; mongodb-linux-x86_64-3.6.0 &#x76EE;&#x5F55;&#x4E0B;&#x521B;&#x5EFA; data/db &#x548C; log/mongodb.log</li>
+<li><p>&#x914D;&#x7F6E;&#x6570;&#x636E;&#x5E93;&#xFF0C;&#x5728; mongodb-linux-x86_64-3.6.0/bin &#x76EE;&#x5F55;&#x4E0B;&#x521B;&#x5EFA; vim mongodb.conf &#x5E76;&#x5199;&#x5165;</p>
+<p>  dbpath = /root/mongodb-linux-x86_64-3.6.0/data/db #&#x6570;&#x636E;&#x6587;&#x4EF6;&#x5B58;&#x653E;&#x76EE;&#x5F55;
+  logpath = /root/mongodb-linux-x86_64-3.6.0/logs/mongodb.log #&#x65E5;&#x5FD7;&#x6587;&#x4EF6;&#x5B58;&#x653E;&#x76EE;&#x5F55;
+  port = 27017  #&#x7AEF;&#x53E3;
+  fork = true  #&#x4EE5;&#x5B88;&#x62A4;&#x7A0B;&#x5E8F;&#x7684;&#x65B9;&#x5F0F;&#x542F;&#x7528;&#xFF0C;&#x5373;&#x5728;&#x540E;&#x53F0;&#x8FD0;&#x884C;
+  <code>#nohttpinterface = true</code>#auth=true
+  bind_ip=0.0.0.0</p>
+</li>
+<li><p>&#x542F;&#x52A8;&#x6570;&#x636E;&#x5E93;&#xFF0C;mongod -f /home/scalevge/vgehsr/mongodb-linux-x86_64-3.6.0/bin/mongodb.conf</p>
+</li>
+</ul>
+<h3 id="mongbdb-&#x6570;&#x636E;&#x5BFC;&#x5165;&#x5BFC;&#x51FA;">mongbdb &#x6570;&#x636E;&#x5BFC;&#x5165;&#x5BFC;&#x51FA;</h3>
+<ul>
+<li><p>mongodb &#x6570;&#x636E;&#x5BFC;&#x51FA; mongodump -h 127.0.0.1:27017 -d train-simulation -o train-simulation</p>
+</li>
+<li><p>mongodb &#x6570;&#x636E;&#x5BFC;&#x5165; mongorestore -h 127.0.0.1:27017 -d train-simulation ./train-simulation</p>
+</li>
+<li><p>mongodb &#x5355;&#x8868;&#x5BFC;&#x51FA; mongoexport -d train-simulation -c users -q &apos;{&quot;name&quot;:{$ne:null}}&apos; -o ./train-users.json</p>
+</li>
+<li><p>mongodb &#x5355;&#x8868;&#x5BFC;&#x5165; mongoimport -h 127.0.0.1:27017 -d train-simulation -c users ./train-users.json</p>
+</li>
+<li><p>mongodb &#x6570;&#x636E;&#x66F4;&#x65B0; mongo\ use dbName\ db.users.update({name:&quot;XA&quot;},{&quot;$set&quot;:{role:51}})</p>
+</li>
+<li><p>&#x5220;&#x9664;&#x6570;&#x636E;&#x5E93; mongo --host 127.0.0.1:27017 dbName --eval &quot;db.dropDatabase()&quot;</p>
+</li>
+</ul>
+<h3 id="&#x5148;&#x5BFC;&#x5165;&#x6570;&#x636E;&#x5E93;&#x6570;&#x636E;&#xFF0C;&#x518D;&#x914D;&#x7F6E;&#x6570;&#x636E;&#x5E93;&#x6743;&#x9650;&#xFF01;&#xFF01;&#xFF01;">&#x5148;&#x5BFC;&#x5165;&#x6570;&#x636E;&#x5E93;&#x6570;&#x636E;&#xFF0C;&#x518D;&#x914D;&#x7F6E;&#x6570;&#x636E;&#x5E93;&#x6743;&#x9650;&#xFF01;&#xFF01;&#xFF01;</h3>
+<h3 id="mongbdb-&#x6570;&#x636E;&#x5E93;&#x7BA1;&#x7406;&#x5458;&#x7528;&#x6237;&#x914D;&#x7F6E;">mongbdb &#x6570;&#x636E;&#x5E93;&#x7BA1;&#x7406;&#x5458;&#x7528;&#x6237;&#x914D;&#x7F6E;</h3>
+<ul>
+<li>mongo --port 27017</li>
+<li><p>&#x521B;&#x5EFA;&#x7528;&#x6237;&#x7BA1;&#x7406;&#x5458;&#xFF1A;</p>
+<p>  //&#x5207;&#x6362;&#x5230; admin &#x6570;&#x636E;&#x5E93;
+  use admin
+  //&#x6DFB;&#x52A0;&#x7BA1;&#x7406;&#x5458;&#xFF0C;&#x53EF;&#x4EE5;&#x7BA1;&#x7406;&#x6240;&#x6709;&#x6570;&#x636E;&#x5E93;
+  db.createUser({user:&quot;root&quot;,pwd:&quot;root123&quot;,roles:[{role:&quot;userAdminAnyDatabase&quot;,db:&quot;admin&quot;}]})
+  //&#x5728;admin&#x6570;&#x636E;&#x5E93;&#x4E0B;&#x5BF9;&#x7BA1;&#x7406;&#x5458;&#x8FDB;&#x884C;&#x6388;&#x6743;&#x3002;&#x8FD4;&#x56DE;1&#x8BF4;&#x660E;&#x6388;&#x6743;&#x6210;&#x529F;
+  db.auth(&apos;root&apos;,&apos;root123&apos;)</p>
+<p>  use admin
+  db.auth(&apos;root&apos;,&apos;root123&apos;)
+  //&#x5207;&#x6362;&#x5230; demo &#x6570;&#x636E;&#x5E93;
+  use demo
+  //&#x6DFB;&#x52A0;demo&#x6570;&#x636E;&#x5E93;&#x7528;&#x6237;&#xFF0C;&#x53EF;&#x4EE5;&#x8BFB;&#x5199;demo&#x6570;&#x636E;&#x5E93;
+  db.createUser({user:&quot;demo&quot;,pwd:&quot;root123&quot;,roles:[{role:&quot;readWrite&quot;,db:&quot;demo&quot;}]})
+  eg:db.createUser({user:&quot;vs2018&quot;,pwd:&quot;Scale123&quot;,roles:[{role:&quot;readWrite&quot;,db:&quot;virtual-survey&quot;}]})
+  //&#x5728;admin&#x6570;&#x636E;&#x5E93;&#x4E0B;&#x5BF9;&#x7BA1;&#x7406;&#x5458;&#x8FDB;&#x884C;&#x6388;&#x6743;&#x3002;&#x8FD4;&#x56DE;1&#x8BF4;&#x660E;&#x6388;&#x6743;&#x6210;&#x529F;
+  db.auth(&apos;demo&apos;,&apos;root123&apos;)
+  eg:db.auth(&quot;vs2018&quot;,&quot;Scale123&quot;)
+  //&#x6DFB;&#x52A0;demo&#x6570;&#x636E;&#x5E93;&#x5907;&#x4EFD;&#x7528;&#x6237;&#xFF0C;&#x53EA;&#x53EF;&#x4EE5;&#x8BFB;demo&#x6570;&#x636E;&#x5E93;
+  db.createUser({user:&quot;demo1&quot;,pwd:&quot;root123456&quot;,roles:[{role:&quot;read&quot;,db:&quot;demo&quot;}]})</p>
+</li>
+<li><p>&#x6388;&#x6743;&#x540E;
+  mongo --port 20181
+  user admin
+  db.auth(&apos;root&apos;,&apos;root123&apos;)
+  show dbs</p>
+</li>
+<li><p>&#x6388;&#x6743;&#x540E;&#xFF0C;&#x76F4;&#x63A5;&#x8BBF;&#x95EE;&#x6307;&#x5B9A;&#x6570;&#x636E;&#x5E93;
+  mongo 127.0.0.1:20181/virtual-survey -u vs2018 -p Scale123
+  show tables</p>
+</li>
+<li><p>&#x6388;&#x6743;&#x540E;&#xFF0C;&#x6570;&#x636E;&#x5BFC;&#x5165;&#x5BFC;&#x51FA;</p>
+</li>
+<li><p>mongodb &#x6570;&#x636E;&#x5BFC;&#x51FA; mongodump -h 127.0.0.1:27017 -d train-simulation -u ts2018 -p Scale123 -o train-simulation</p>
+</li>
+<li><p>mongodb &#x5355;&#x8868;&#x5BFC;&#x51FA; mongoexport -d train-simulation -u ts2018 -p Scale123  -c users -q &apos;{&quot;name&quot;:{$ne:null}}&apos; -o ./train-users.json</p>
+</li>
+<li><p>&#x6253;&#x5305; tar zcvf fileName.tar.gz train-simulation</p>
+<p>  mongo --port 20181
+  use admin
+  db.auth(&quot;root&quot;,&quot;root123&quot;)
+  // &#x521B;&#x5EFA;&#x6570;&#x636E;&#x5E93;
+  use targetdb
+  db.createUser({user:&quot;demo&quot;,pwd:&quot;root123&quot;,roles:[{role:&quot;readWrite&quot;,db:&quot;demo&quot;}]})
+  db.auth(&apos;demo&apos;,&apos;root123&apos;)</p>
+</li>
+<li><p>&#x5207;&#x6362;&#x6570;&#x636E;&#x5E93;&#x540E;&#x8981;&#x91CD;&#x65B0;&#x8BA4;&#x8BC1;</p>
+</li>
+<li><p>mongodb &#x6570;&#x636E;&#x5BFC;&#x5165; mongorestore -h 127.0.0.1:27017 -d targetdb -u ts2018 -p Scale123 ./train-simulation</p>
+</li>
+<li><p>mongodb &#x5355;&#x8868;&#x5BFC;&#x5165; mongoimport -h 127.0.0.1:27017 -d targetdb targetdb -u ts2018 -p Scale123 -c users ./train-users.json</p>
+<p>  mongo 127.0.0.1:20181/targetdb -u vs2018 -p Scale123
+  show tables</p>
+</li>
+</ul>
+<h3 id="&#x6570;&#x636E;&#x5E93;&#x5B9A;&#x65F6;&#x5907;&#x4EFD;&#x4EFB;&#x52A1;">&#x6570;&#x636E;&#x5E93;&#x5B9A;&#x65F6;&#x5907;&#x4EFD;&#x4EFB;&#x52A1;</h3>
+<ul>
+<li><p>backup.sh</p>
+<h1 id="binsh">!/bin/sh</h1>
+<p>  backUpFolder=/home/train-simulation/data
+  date<em>now =`date +%Y</em>%m<em>%d</em>%H%M`
+  backFileName=train_$date_now</p>
+<p>  cd $backUpFolder
+  mkdir -p $backFileName</p>
+<p>  mongodb &#x6570;&#x636E;&#x5BFC;&#x51FA; mongodump -h 127.0.0.1:27017 -d train-simulation -u ts2018 -p Scale123 -o $backFileName</p>
+<p>  tar zcvf $backFileName.tar.gz $backFileName</p>
+<p>  rm -rf $backFileName</p>
+</li>
+<li><p>sudo sh ./backup.sh</p>
+</li>
+<li><p>&#x5B9A;&#x65F6;&#x4EFB;&#x52A1;</p>
+<p>  crontab -e</p>
+<p>  13 00 <em> </em> <em> sh /home/</em>/backup.sh</p>
+</li>
+</ul>
+<h2 id="&#x5176;&#x4ED6;">&#x5176;&#x4ED6;</h2>
+<ul>
+<li><p>&#x67E5;&#x770B; ip  ip addr</p>
+</li>
+<li><p>&#x9632;&#x706B;&#x5899;&#x7AEF;&#x53E3; firewall-cmd --zone=public --add-port=3004/tcp --permanent</p>
+</li>
+<li><p>&#x91CD;&#x542F;&#x9632;&#x706B;&#x5899; firewall-cmd --reload</p>
+</li>
+<li><p>firewall-cmd -add-forward-port=port=80:proto=tcp:toport=3004</p>
+</li>
+</ul>
+<p>Windows &#x914D;&#x7F6E;</p>
+<p>&#x5B89;&#x88C5; MongoDB,&#x5199; .conf &#x914D;&#x7F6E;&#x6587;&#x4EF6; </p>
+<pre><code>dbpath = C:\path\MongoDB\data\db #&#x6570;&#x636E;&#x6587;&#x4EF6;&#x5B58;&#x653E;&#x76EE;&#x5F55;
+logpath = C:\path\MongoDB\log\mongodb.log #&#x65E5;&#x5FD7;&#x6587;&#x4EF6;&#x5B58;&#x653E;&#x76EE;&#x5F55;
+port = 20181   #&#x7AEF;&#x53E3;
+#fork = true  #&#x4EE5;&#x5B88;&#x62A4;&#x7A0B;&#x5E8F;&#x7684;&#x65B9;&#x5F0F;&#x542F;&#x7528;&#xFF0C;&#x5373;&#x5728;&#x540E;&#x53F0;&#x8FD0;&#x884C;
+#nohttpinterface = true
+</code></pre><p>auth=false
+bind_ip=0.0.0.0</p>
+<p>&#x914D;&#x7F6E;&#x73AF;&#x5883;&#x53D8;&#x91CF;</p>
+<p>&#x7BA1;&#x7406;&#x5458;&#x8EAB;&#x4EFD;&#x6253;&#x5F00; CMD</p>
+<p>&#x5B89;&#x88C5;&#x6570;&#x636E;&#x5E93;&#x670D;&#x52A1;
+mongod --config &quot;c:\path\MongoDB\mongodb.conf&quot; --install --serviceName &quot;MongoDB&quot;</p>
+<p>&#x79FB;&#x9664;&#x6570;&#x636E;&#x5E93;&#x670D;&#x52A1;
+mongod --remove --serviceName MongoDB</p>
+<p>&#x542F;&#x52A8;&#x670D;&#x52A1;
+net start MongoDB 
+&#x5173;&#x95ED;&#x670D;&#x52A1;
+net stop MongoDB </p>
+
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                <a href="CentOS下node配置.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page: 第二节：CentOS下node配置">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"第三节：MongoDB相关操作","level":"1.2.3","depth":2,"previous":{"title":"第二节：CentOS下node配置","level":"1.2.2","depth":2,"path":"notes/CentOS下node配置.md","ref":"./notes/CentOS下node配置.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"notes/MongoDB相关操作.md","mtime":"2019-04-16T08:45:25.722Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-04-16T08:49:17.673Z"},"basePath":"..","book":{"language":""}});
+        });
+    </script>
+</div>
+
+        
+    <script src="../gitbook/gitbook.js"></script>
+    <script src="../gitbook/theme.js"></script>
+    
+        
+        <script src="../gitbook/gitbook-plugin-search/search-engine.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-search/search.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-lunr/lunr.min.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-lunr/search-lunr.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-sharing/buttons.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+
+    </body>
+</html>
+
